@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign in or Register</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="col-sm-4"></div>
+<div class="col-sm-4" style="margin-top:50px" ng-app="mainApp" ng-controller="mainController">
+	<center><img src="images/ebay.png" width="150" height="75" ></center>
+	<center><div class="container" style = "border:0.5px solid grey; width:400px; height:auto">
+		<ul class="nav nav-tabs" style="width:150">
+  			<li class="active" style = "width:50%"><a data-toggle="tab" href="#signIn">  <span class="glyphicon glyphicon-circle-arrow-right"></span>Sign In</a></li>
+		    <li><a data-toggle="tab" style="width:181%" href="#register"><span class="glyphicon glyphicon-plus-sign"></span>Register</a></li>
+		</ul>
+
+		<div class="tab-content">
+    		<div id="signIn" class="tab-pane fade in active">
+ 				<div class="form-group">
+      				<input type="email" class="form-control" style="margin-top:15px;height:40px" placeholder="Email or username" name="emailId" ng-model="emailId"/>
+      				<input type="password" class="form-control" style="margin-top:25px;height:40px" placeholder="password" name="loginPassword" ng-model="loginPassword"/>
+      				<div><p font-color="red">{{invalid}}</p></div>
+              <input type="button" id="login" class="btn btn-primary" style="margin-top:25px;width:100%" value="Sign in" ng-click="login()"/>
+      			  
+            </div>
+    		</div>
+    	
+    		<div id="register" class="tab-pane fade">
+      			<div class="form-group">
+      				<input type="email" class="form-control" style="margin-top:15px;height:40px" placeholder="Email" name="regEmail" ng-model="regEmail"/>
+      				<input type="password" class="form-control" style="margin-top:10px;height:40px" placeholder="password" name="password" ng-model="password"/>
+      				<input type="text" class="form-control" style="margin-top:10px;height:40px;width:49%;float:left" placeholder="First name" name="firstName" ng-model="firstName"/>
+      				<input type="text" class="form-control" style="margin-top:10px;height:40px;width:49%;float:right" placeholder="Last name" name="lastName" ng-model="lastName"/>
+             <!-- <input type="Date" class="form-control" style="margin-top:10px;height:40px;width:49%;float:left" placeholder="Date of Birth" name="Dob"  ng-model="Dob"/>-->
+    				<input placeholder="Date of Birth" class="form-control" type="text" style="margin-top:10px;height:40px;width:49%;float:left" onfocus="(this.type='date')" onblur="(this.type='text')" name="Dob"  ng-model="Dob">
+    				<input type="text" class="form-control" style="margin-top:10px;margin-bottom:10px;height:40px;width:49%;float:right" placeholder="Location" name="location" ng-model="location"/>
+    				<input type="text" class="form-control" style="height:40px;width:100%;" placeholder="Contact Number"  ng-model="contactNo"/>
+      			<input type="button" class="btn btn-primary" style="margin-top:10px;width:100%" value="Register" ng-click="register()"/>
+               
+      			</div>
+    		</div>
+     	</div>
+	</div></center>
+  </div>
+<div class="col-sm-4"></div>
+</body>
+</html>

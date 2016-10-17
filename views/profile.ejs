@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>profile</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="js/main.js"></script>
+   </head>
+   <body style="background-color:#F6F6F6" ng-app="myProfile" ng-controller="myProfileController">
+      <nav class="navbar navbar-default" style="height:10px;background-color:white">
+         <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=firstName%><span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="#">My collection</a></li>
+                        <li><a href="#">Account Settings</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/logout">Sign Out</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="#">Daily Deals <span class="sr-only">(current)</span></a></li>
+                  <li><a href="#">Gift Cards</a></li>
+                  <li><a href="#">Sell</a></li>
+                  <li><a href="#">Help & Contact</a></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MyeBay</a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">My collection</a></li>
+                        <li><a href="#">Account Settings</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/logout">Sign Out</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="/ebayCart">Cart</a></li>
+               </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+         </div>
+         <!-- /.container-fluid -->
+      </nav>
+      <!--End of navbar-->
+      <!--start of search icon-->
+      <div class="row" style="margin-top:-10px">
+         <div class="col-sm-3"><a href="/success"><img src="images/ebay.png"  width="175px" height="45px" style="float:right;margin-right: 5px" ></a></div>
+         <div class="col-sm-5">
+            <input type="text" class="form-control" placeholder="Search" style="width:100%;height:40px">
+         </div>
+         <button type="submit" class="btn btn-primary" style="height:40px">Search</button> <span style="margin-left:20px">Advanced</span>
+      </div>
+      </div>
+      <!--End of search icon-->
+      <!--start of profile-->
+      <div class="col-sm-1"></div>
+      <div id = "woodBackGround" class = "col-sm-10" style = "background-image:url(images/profileBackground.jpg); position:relative; height: 250px;margin-top: 10px;z-index: -1">
+         <div id = "userDiv" class = "col-sm-8" style = "background-color: white; height: 200px; margin-left: 200px; margin-top: 50px">
+            <div class="col-sm-7"><img src = "images/profilepic.jpg" style = "height: 190px; width:180px; margin-top:5px; margin-left:-25px">
+               <span style = "margin-left: 10px; font-size: 25px;" id = "userHandle"><b><%=firstName%></b></span>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm-3" style=""></div>
+         <div class="col-sm-8" style="float: left;">Name: <%=firstName%>.<%=lastName%> | Email Id: <%=emailId%> | Dob: <%=Dob%> | 0 Reviews | 0 Views | <span class="glyphicon glyphicon-map-marker"></span><%=location%> </div>
+         <div class="col-sm-1"></div>
+      </div>
+      <!--Start of posting Advertisement-->
+      <div class="row" style="margin-top:50px;">
+         <div class="col-sm-1"></div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <h3 style="float: left;margin-bottom: 40px">Start Selling on eBay today</h3>
+         </div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <a href = "#" ng-click="sellItem()">
+               <h3 style="float: right;margin-bottom: 40px" >Sell item</h3>
+            </a>
+         </div>
+         <div class="col-sm-6"></div>
+      </div>
+      <!--item for sell-->
+      <div class="col-sm-2"></div>
+      <div class="row" ng-show="myVar">
+         <div class="col-sm-8" style="margin-top:20px"></div>
+         <div class="container">
+            <form class="form-horizontal">
+               <div class="form-group">
+                  <label class="control-label col-sm-3" for="email"></label>
+                  <div class="col-sm-6">
+                     <input type="text" class="form-control" id="itemName" placeholder="Item Name" ng-model="itemName">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label class="control-label col-sm-3" for="pwd"></label>
+                  <div class="col-sm-6">
+                     <input type="text" class="form-control" id="itemDescription" placeholder="Item Description" ng-model="itemDescription">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label class="control-label col-sm-3" for="email"></label>
+                  <div class="col-sm-6">
+                     <input type="number" class="form-control" id="itemPrice" placeholder="Item Price" ng-model="itemPrice">
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label class="control-label col-sm-3" for="pwd"></label>
+                  <div class="col-sm-6">
+                     <input type="number" class="form-control" id="Quantity" placeholder="Quantity" ng-model="Quantity">
+                  </div>
+               </div>
+               <div class="row" ng-show="myVar4" style="margin-top:20px ">
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="pwd"></label>
+                      <div class="col-sm-6">
+                         <input type="number" class="form-control" id="itemPrice" placeholder="Bid time in days" ng-model="bidTime">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-3" for="pwd"></label>
+                      <div class="col-sm-6">
+                         <input type="button" class="btn btn-primary" id="postAdvertisementBid" value="Post For Bid"  ng-click="postAdvertisementBid()">
+                      </div>
+                  </div>
+                </div>
+               <div class="form-group">
+                  <div class="col-sm-offset-4 col-sm-5" style="float: right;">
+                     <button type="submit" class="btn btn-primary" ng-click="postAdvertisement()">Normal Sell</button>
+                     <button type="submit" class="btn btn-primary" ng-click="showBid()">Bid</button>
+                  </div>
+               </div>
+            </form>
+            <!--  Full Name: {{firstName + " " + lastName}}-->
+         </div>
+      </div>
+      </div>
+      <!--End of posting Advertisement-->
+      <!--start of your collection-->
+      <div class="row" style="margin-top:25px;">
+         <div class="col-sm-1"></div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <h3 style="float: left;margin-bottom: 40px">My Advertisements</h3>
+         </div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <a href = "#" ng-click="myAdvertisements()">
+               <h3 style="float: right;margin-bottom: 40px" >Show My Advertisements</h3>
+            </a>
+         </div>
+         <div class="col-sm-6"></div>
+      </div>
+      <!--item for sail-->
+      <!-- do Ng-repeat to this section-->
+      <div ng-repeat="x in result">
+         <div class="row" ng-show="myVar1" style="margin-top:20px ">
+            <div class="container" style="width: 100%; ">
+               <div class="col-sm-3"></div>
+               <div class="col-sm-6">
+                  <div class="panel panel-default">
+                     <div class="panel-heading" style="background-color:#4da6ff ">Item Name : {{x.prd_name}}</div>
+                     <div class="panel-body">
+                        Item Description : {{x.prd_desc}}
+                     </div>
+                     <div class="panel-footer">
+                        quantity : {{x.prd_quantity}}
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-3"></div>
+            </div>
+         </div>
+      </div>
+      <!--end of ng repeat -->
+      
+
+
+
+
+      <!--start of my purchases-->
+
+
+      <div class="row" style="margin-top:25px;">
+         <div class="col-sm-1"></div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <h3 style="float: left;margin-bottom: 40px">My Purchases</h3>
+         </div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <a href = "#" ng-click="myPurchases()">
+               <h3 style="float: right;margin-bottom: 40px" >Show My Purchases</h3>
+            </a>
+         </div>
+         <div class="col-sm-6"></div>
+      </div>
+      <!--item for sell-->
+      <!-- do Ng-repeat to this section-->
+      <div ng-repeat="y in results1">
+         <div class="row" ng-show="myVar2" style="margin-top:20px ">
+            <div class="container" style="width: 100%; ">
+               <div class="col-sm-3"></div>
+               <div class="col-sm-6">
+                  <div class="panel panel-default">
+                     <div class="panel-heading" style="background-color:#4da6ff ">Item Name : {{y.prd_name}}</div>
+                     <div class="panel-body">
+                        product quantity : {{y.prd_quantity}}
+                     </div>
+                     <div class="panel-footer">
+                        seller name : {{y.s_username}}
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-3"></div>
+            </div>
+         </div>
+      </div>
+
+
+
+      <!--end of my purchases--> 
+
+
+      <!-- start of product i sold-->
+      <div class="row" style="margin-top:25px;">
+         <div class="col-sm-1"></div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <h3 style="float: left;margin-bottom: 40px">Sold Items</h3>
+         </div>
+         <div class="col-sm-5" style="border-bottom: 1px solid grey;">
+            <a href = "#" ng-click="mySoldItems()">
+               <h3 style="float: right;margin-bottom: 40px" >Show Sold Items</h3>
+            </a>
+         </div>
+         <div class="col-sm-6"></div>
+      </div>
+      <!--item for sell-->
+      <!-- do Ng-repeat to this section-->
+      <div ng-repeat="z in results2">
+         <div class="row" ng-show="myVar3" style="margin-top:20px ">
+            <div class="container" style="width: 100%; ">
+               <div class="col-sm-3"></div>
+               <div class="col-sm-6">
+                  <div class="panel panel-default">
+                     <div class="panel-heading" style="background-color:#4da6ff ">Item Name : {{z.prd_name}}</div>
+                     <div class="panel-body">
+                        product quantity : {{z.prd_quantity}}
+                     </div>
+                     <div class="panel-footer">
+                        Buyer Name : {{z.buyer_uname}}
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-3"></div>
+            </div>
+         </div>
+      </div>
+
+
+
+      <!--end of product i sold--> 
+
+
+      
+      <!--end of your collection-->
+      <!--end of profile-->
+   </body>
+</html>

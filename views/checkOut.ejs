@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>checkOut</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+</head>
+
+<body style="background-color:#F6F6F6" ng-app="checkoutApp" ng-controller="checkoutController">
+    <div><center><img src="images/ebay.png" width="200px" height="100px"></center></div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+        <div class="container" style="width: 100%; height:auto; margin-top: 50px">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background-color:#fcfcfc;text-align:left;height:auto;">
+                    <div class="row">
+                        <div style="margin-left:10px ">Please Enter Your Credit Card Details</div>
+                        <center><input type="text" class="form-control" placeholder="card number" style="width:97%;margin-top: 5px; " ng-model="CNum"></center>
+                        <input type="Date" class="form-control" placeholder="expiration Date" style="width:48%;margin-left: 10px;margin-top: 5px;float: left" ng-model="ExpDate">
+                        <input type="number" class="form-control" placeholder="security number" style="width:48%;float: right;margin-top: 5px;margin-right: 8px" ng-model="CvvNo">
+                        <input type="text" class="form-control" placeholder="First Name" style="width:48%;margin-left: 10px;margin-top: 5px;float: left" >
+                        <input type="text" class="form-control" placeholder="Last Name" style="width:48%;float: right;margin-top: 5px;margin-right: 8px;margin-bottom: 5px">
+                        <center><input type="button" class="btn btn-primary" value="submit" style="width:98%;margin-top: 5px; " ng-click="ValidateCard()"></center>
+                        <div style="color:red">{{Result}}</div>
+                        <div style="color:green">{{Result1}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div class="container" style="width: 100%;height:auto;margin-top: 50px; ">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color:#ffffff">Total Price:<%=totalPrice%><br></div>
+                <div class="panel-body">
+                    <input type="button" class="btn btn-primary" ng-click="buyProduct()" value="Confirm and Pay"><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+        <div class="container" style="width: 100%; height:auto; margin-top: 50px">
+            <div class="panel panel-default">
+                <div class="panel-body" style="background-color:#fcfcfc;text-align:left;height:auto;">
+                    <div class="row">
+                        <div style="margin-left:10px ">Please Enter Your Shipping Address</div>
+                        <center><input type="text" class="form-control" placeholder="Street Address" style="width:98%;margin-top: 5px; "  ng-model="streetAddress"></center>
+                        <center><input type="text" class="form-control" placeholder="place" style="width:98%;margin-top: 5px; " ng-model="place"></center>
+                        <center><input type="text" class="form-control" placeholder="state" style="width:98%;margin-top: 5px; " ng-model="state"></center>
+                        <center><input type="text" class="form-control" placeholder="country" style="width:98%;margin-top: 5px; " ng-model="country"></center>
+                        <center><input type="text" class="form-control" placeholder="Postal Code" style="width:98%;margin-top: 5px; " ng-model="postalCode"></center>
+                        <!--<div style="color: red">{{address}}</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="col-sm-1"></div>
+    <div ng-repeat="x in checkoutItems">
+        <div class="col-sm-6">
+        	<div style="margin-left:30px">Items in your cart:</div>
+            <div class="container" style="width: 100%; ">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color:#4da6ff ">Item Name : {{x.prd_name}}</div>
+                        <div class="panel-body">
+                              Item Description : {{x.prd_desc}}
+                        </div>
+                        <div class="panel-footer">
+                              quantity : {{x.productBuyQuantity}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</body>
+</html>
